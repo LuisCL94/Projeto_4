@@ -137,9 +137,9 @@ Cabecalho inicia_fila(int NAproximacoes, int NDecolagens, int NVoos){
   printf("Fila de Pedidos:");
 
   while (aux !=NULL) {
-    printf("\n\t[Código do vôo: %s - ", aux->info->codigo_de_voo);
+    printf("\n\t[%s - ", aux->info->codigo_de_voo);
     if(aux->info->modo_de_voo == 'A'){
-      printf(" P - %d]", aux->info->nivel_de_combustivel);
+      printf(" A - %d]", aux->info->nivel_de_combustivel);
     }else{
       printf(" D - --]");
     }

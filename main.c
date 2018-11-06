@@ -131,9 +131,8 @@ void simula_voos(Cabecalho *c, int *hours, int *min){
   priorizar_combustivel_0(c);
   emergencia = alerta_de_emergencia(c);
 
-  while (c->inicio != NULL){    //iniciando simulação
+  while (c->inicio != NULL){
 
-    //Se qualquer pista estiver liberada, ele entrará no if da pista para o pedido ser aceito;
     if(pista_1 && c->inicio != NULL){
       if(c->inicio->info->modo_de_voo == 'D')
         tempo_1 = 2*U_TEMPO;
@@ -220,7 +219,7 @@ void simula_voos(Cabecalho *c, int *hours, int *min){
         *hours= 0;
     }
 
-    
+
     emergencia = alerta_de_emergencia(c);
   }
 }/*FIM-simula_voos*/

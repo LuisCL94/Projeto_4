@@ -31,12 +31,12 @@ typedef struct {
 /*
  * ASSINATURA DAS FUNÇÕES
  */
-int existe(int *valores, int tam, int valor); 
-void rand_voos(int *numeros, int quantNumeros); 
-Fila *cria_aviao(); 
-Cabecalho inicia_fila(int NAproximacoes, int NDecolagens, int NVoos, int *h, int *m); 
+int existe(int *valores, int tam, int valor);
+void rand_voos(int *numeros, int quantNumeros);
+Fila *cria_aviao();
+Cabecalho inicia_fila(int NAproximacoes, int NDecolagens, int NVoos, int *h, int *m);
 void priorizar_combustivel_0(Cabecalho *c);
-int alerta_de_emergencia(Cabecalho *c); 
+int alerta_de_emergencia(Cabecalho *c);
 void imprime_evento(Cabecalho *c, int h, int m, int pista);
 void simula_voos(Cabecalho *c, int *hours, int *min);
 
@@ -109,7 +109,7 @@ void imprime_evento(Cabecalho *c, int h, int m, int pista){ //Imprime e deleta o
     c->inicio = c->inicio->prox;
 
     printf("Código de Voo: %s\n", voo->info->codigo_de_voo);
-    
+
     if(voo->info->modo_de_voo == 'D')
       printf("Status: aeronave decolou");
     else
@@ -129,7 +129,7 @@ void simula_voos(Cabecalho *c, int *hours, int *min){
   int tempo_tanque = 0;
 
   priorizar_combustivel_0(c);
-  emergencia = alerta_de_emergencia(c);     //Coloca as prioridades 0 na frente e avisa se tem emergencia
+  emergencia = alerta_de_emergencia(c);
 
   while (c->inicio != NULL){    //iniciando simulação
 
@@ -140,7 +140,7 @@ void simula_voos(Cabecalho *c, int *hours, int *min){
       else
         tempo_1 = 4*U_TEMPO;
       imprime_evento(c, *hours, *min, 1);
-      pista_1 = FALSE;                                          //Se for solicitação para decolagem, ele poderá pedir para as 3 pistas
+      pista_1 = FALSE;
     }
 
     if(pista_2 && c->inicio != NULL){
@@ -220,7 +220,8 @@ void simula_voos(Cabecalho *c, int *hours, int *min){
         *hours= 0;
     }
 
-    emergencia = alerta_de_emergencia(c);     //Coloca as prioridades 0 na frente e avisa se tem emergencia
+    
+    emergencia = alerta_de_emergencia(c);
   }
 }/*FIM-simula_voos*/
 

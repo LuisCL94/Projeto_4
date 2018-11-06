@@ -77,6 +77,7 @@ Cabecalho inicia_fila(int NAproximacoes, int NDecolagens, int NVoos){
   //Inicia Cabecalho - 1º item da lista sem a info preenchida
   c.inicio = cria_aviao();
   c.fim = c.inicio;
+  c.inicio->prox = NULL;
 
   //Tempo inicial da simulação
   hours = rand()%24;
@@ -100,15 +101,15 @@ Cabecalho inicia_fila(int NAproximacoes, int NDecolagens, int NVoos){
 
   //Monta fila de avioes
   for(int i = 0; i < NVoos; i++){
-
-    if(i){ //Caso exista só 1 avião
+    if(i != 0){ //Caso exista só 1 avião
       c.fim->prox = cria_aviao();
       c.fim = c.fim->prox;
+      c.fim->prox = NULL;
     }
 
     //Preenche o código aleatório do avião
-    strcpy(c.fim->info->codigo_de_voo, lista_voos[num_aleatorios[i]]);
-    printf("\t\tCOD: %s\n", c.fim->info->codigo_de_voo);
+    strncpy(c.fim->info->codigo_de_voo, lista_voos[num_aleatorios[i]], 7);
+    //strcpy(c.fim->info->codigo_de_voo, lista_voos[num_aleatorios[i]]);
 
     tipo = rand() % 2;
     if(tipo == FUEL_D && cont_D < NDecolagens){
@@ -126,7 +127,6 @@ Cabecalho inicia_fila(int NAproximacoes, int NDecolagens, int NVoos){
         cont_D++;
       }
     }
-    c.fim->prox = NULL;
   }/*FIM-for*/
 
   //Dados iniciais
@@ -155,19 +155,21 @@ Cabecalho inicia_fila(int NAproximacoes, int NDecolagens, int NVoos){
 
   printf("\n");
 
-  for(int i=1; i<=NVoos; i++) {
+  /*for(int i=1; i<=NVoos; i++) {
       if(i==1)
           printf("APROXIMACOES:\n");
       if(i==NAproximacoes+1)
           printf("DECOLAGENS:\n");
       printf("%s\n", lista_voos[num_aleatorios[i]]);
-  }
+  } */
 
   return c;
 }/*FIM-inicia_fila*/
 
 Fila *cria_aviao(){
   Fila *novo = (Fila*) malloc(sizeof(Fila));
+  Aviao *n_av = (Aviao*) malloc(sizeof(Aviao));
+  novo->info = n_av;
   return novo;
 }/*FIM-cria_aviao*/
 
